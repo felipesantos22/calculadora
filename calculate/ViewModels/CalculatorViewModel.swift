@@ -21,16 +21,16 @@ class CalculatorViewModel: ObservableObject {
         case add, subtract, multiply, divide
     }
     
-    // Função para carregar o histórico do UserDefaults
+    // Func para carregar o histórico
     func loadHistory() {
         if let savedHistory = UserDefaults.standard.data(forKey: "operationHistory"),
            let decodedHistory = try? JSONDecoder().decode([OperationRecord].self, from: savedHistory) {
             self.history = decodedHistory
-            self.nextID = (history.last?.id ?? 0) + 1 // Define o próximo ID
+            self.nextID = (history.last?.id ?? 0) + 1
         }
     }
     
-    // Função para salvar o histórico no UserDefaults
+    // Func para salvar o histórico
     func saveHistory() {
         if let encoded = try? JSONEncoder().encode(history) {
             UserDefaults.standard.set(encoded, forKey: "operationHistory")
@@ -80,7 +80,7 @@ class CalculatorViewModel: ObservableObject {
         
         successMessage = "Cálculo armazenado com sucesso!"
         
-        // Salva o histórico no UserDefaults
+        // Aqui eu salvo o historico
         saveHistory()
         
         value1 = ""

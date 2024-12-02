@@ -24,7 +24,6 @@ struct ContentView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
-                // Botões de operação
                 HStack(spacing: 15) {
                     Button(action: {
                         viewModel.calculate(.add)
@@ -68,7 +67,7 @@ struct ContentView: View {
                     }
                 }
                 
-                // Resultado
+                // Result
                 Text("Resultado: \(viewModel.result)")
                     .font(.title)
                     .padding()
@@ -93,7 +92,7 @@ struct ContentView: View {
             .padding()
             .navigationTitle("Calculadora")
             .onAppear {
-                viewModel.loadHistory() // Carregando histórico ao aparecer
+                viewModel.loadHistory()
             }
         }
     }
