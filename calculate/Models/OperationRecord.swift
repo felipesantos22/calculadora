@@ -5,10 +5,9 @@
 //  Created by Felipe Santos on 01/12/24.
 //
 
-// Models/OperationRecord.swift
 import Foundation
 
-struct OperationRecord: Identifiable {
+struct OperationRecord: Identifiable, Codable {
     let id: Int
     let value1: String
     let value2: String
@@ -16,4 +15,5 @@ struct OperationRecord: Identifiable {
     let result: Double
     let timestamp: String
 }
+
 

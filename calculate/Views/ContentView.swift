@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                // Campos de entrada
+                
                 TextField("Digite o primeiro valor", text: $viewModel.value1)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -81,7 +81,7 @@ struct ContentView: View {
                         .transition(.opacity)
                 }
                 
-                // Navegação para o histórico
+                // Navegação para o histórico, vou refatorar no futuro
                 NavigationLink(destination: HistoryView(history: viewModel.history)) {
                     Text("Ver Histórico")
                         .font(.headline)
@@ -92,6 +92,9 @@ struct ContentView: View {
             }
             .padding()
             .navigationTitle("Calculadora")
+            .onAppear {
+                viewModel.loadHistory() // Carregando histórico ao aparecer
+            }
         }
     }
     
