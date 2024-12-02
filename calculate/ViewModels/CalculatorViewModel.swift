@@ -5,7 +5,6 @@
 //  Created by Felipe Santos on 02/12/24.
 //
 
-// ViewModels/CalculatorViewModel.swift
 import SwiftUI
 
 class CalculatorViewModel: ObservableObject {

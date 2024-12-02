@@ -5,7 +5,6 @@
 //  Created by Felipe Santos on 01/12/24.
 //
 
-// Views/ContentView.swift
 import SwiftUI
 
 struct ContentView: View {
@@ -27,28 +26,40 @@ struct ContentView: View {
                 
                 // Botões de operação
                 HStack(spacing: 15) {
-                    Button(action: { viewModel.calculate(.add) }) {
+                    Button(action: {
+                        viewModel.calculate(.add)
+                        clearResultAfterDelay()
+                    }) {
                         Text("+")
                             .frame(width: 50, height: 50)
                             .background(Color.blue)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
-                    Button(action: { viewModel.calculate(.subtract) }) {
+                    Button(action: {
+                        viewModel.calculate(.subtract)
+                        clearResultAfterDelay()
+                    }) {
                         Text("-")
                             .frame(width: 50, height: 50)
                             .background(Color.red)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
-                    Button(action: { viewModel.calculate(.multiply) }) {
+                    Button(action: {
+                        viewModel.calculate(.multiply)
+                        clearResultAfterDelay()
+                    }) {
                         Text("×")
                             .frame(width: 50, height: 50)
                             .background(Color.green)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
-                    Button(action: { viewModel.calculate(.divide) }) {
+                    Button(action: {
+                        viewModel.calculate(.divide)
+                        clearResultAfterDelay()
+                    }) {
                         Text("÷")
                             .frame(width: 50, height: 50)
                             .background(Color.purple)
@@ -81,6 +92,13 @@ struct ContentView: View {
             }
             .padding()
             .navigationTitle("Calculadora")
+        }
+    }
+    
+    // Func para limpar o resultado
+    private func clearResultAfterDelay() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            viewModel.result = ""
         }
     }
 }
