@@ -14,12 +14,12 @@ struct ContentView: View {
         NavigationView {
             VStack(spacing: 20) {
                 
-                TextField("200", text: $viewModel.value1)
+                TextField("Digite o primeiro valor", text: $viewModel.value1)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
-                TextField("100", text: $viewModel.value2)
+                TextField("Digite o segundo valor", text: $viewModel.value2)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
@@ -88,9 +88,23 @@ struct ContentView: View {
                         .background(Color.gray.opacity(0.2))
                         .cornerRadius(10)
                 }
+                
+                Button(action: {
+                    viewModel.clearHistory()  // Chama o método para limpar o histórico
+                }) {
+                    Text("Limpar Histórico")
+                        .font(.headline)
+                        .padding()
+                        .frame(width: 140, height: 50)
+                        .background(Color.red)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .padding(.top)
             }
             .padding()
             .navigationTitle("Calculadora")
+            .navigationBarTitleDisplayMode(.inline) 
             .onAppear {
                 viewModel.loadHistory()
             }

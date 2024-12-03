@@ -17,7 +17,7 @@ class CalculatorViewModel: ObservableObject {
     @Published var successMessage: String? = nil
     private var nextID: Int = 1
     
-
+    
     // Func1 para carregar o histórico
     func loadHistory() {
         if let savedHistory = UserDefaults.standard.data(forKey: "operationHistory"),
@@ -32,6 +32,11 @@ class CalculatorViewModel: ObservableObject {
         if let encoded = try? JSONEncoder().encode(history) {
             UserDefaults.standard.set(encoded, forKey: "operationHistory")
         }
+    }
+    
+    func clearHistory() {
+        history.removeAll()
+        saveHistory()
     }
     
     func calculate(_ operation: Operation) {

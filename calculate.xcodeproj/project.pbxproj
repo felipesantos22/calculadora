@@ -21,11 +21,6 @@
 			path = calculate;
 			sourceTree = "<group>";
 		};
-		8F830AB02CFF559200AE90FC /* Enums */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Enums;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +37,6 @@
 		8F5FEAB22CFD23D8000574A6 = {
 			isa = PBXGroup;
 			children = (
-				8F830AB02CFF559200AE90FC /* Enums */,
 				8F5FEADD2CFDCE7B000574A6 /* README.md */,
 				8F5FEABD2CFD23D8000574A6 /* calculate */,
 				8F5FEABC2CFD23D8000574A6 /* Products */,
@@ -74,7 +68,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				8F5FEABD2CFD23D8000574A6 /* calculate */,
-				8F830AB02CFF559200AE90FC /* Enums */,
 			);
 			name = calculate;
 			packageProductDependencies = (

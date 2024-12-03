@@ -22,5 +22,6 @@ struct HistoryView: View {
             .padding(.vertical, 5)
         }
         .navigationTitle("Histórico")
+        .navigationBarTitleDisplayMode(.inline) 
     }
 }
