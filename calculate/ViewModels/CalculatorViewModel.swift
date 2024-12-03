@@ -17,11 +17,8 @@ class CalculatorViewModel: ObservableObject {
     @Published var successMessage: String? = nil
     private var nextID: Int = 1
     
-    enum Operation {
-        case add, subtract, multiply, divide
-    }
-    
-    // Func para carregar o histórico
+
+    // Func1 para carregar o histórico
     func loadHistory() {
         if let savedHistory = UserDefaults.standard.data(forKey: "operationHistory"),
            let decodedHistory = try? JSONDecoder().decode([OperationRecord].self, from: savedHistory) {
