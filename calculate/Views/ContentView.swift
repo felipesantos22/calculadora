@@ -104,7 +104,7 @@ struct ContentView: View {
             }
             .padding()
             .navigationTitle("Calculadora")
-            .navigationBarTitleDisplayMode(.inline) 
+            .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 viewModel.loadHistory()
             }

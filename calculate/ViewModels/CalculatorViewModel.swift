@@ -18,14 +18,20 @@ class CalculatorViewModel: ObservableObject {
     private var nextID: Int = 1
     
     
-    // Func1 para carregar o histórico
+    // Func para carregar o histórico
     func loadHistory() {
         if let savedHistory = UserDefaults.standard.data(forKey: "operationHistory"),
            let decodedHistory = try? JSONDecoder().decode([OperationRecord].self, from: savedHistory) {
             self.history = decodedHistory
-            self.nextID = (history.last?.id ?? 0) + 1
+            // Gera o próximo ID como o maior ID + 1, garantindo exclusividade
+            self.nextID = (history.map { $0.id }.max() ?? 0) + 1
+        } else {
+            // Caso não exista histórico salvo, inicializa o ID
+            self.history = []
+            self.nextID = 1
         }
     }
+
     
     // Func para salvar o histórico
     func saveHistory() {
