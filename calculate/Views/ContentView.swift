@@ -14,12 +14,12 @@ struct ContentView: View {
         NavigationView {
             VStack(spacing: 20) {
                 
-                TextField("Digite o primeiro valor", text: $viewModel.value1)
+                TextField("200", text: $viewModel.value1)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
-                TextField("Digite o segundo valor", text: $viewModel.value2)
+                TextField("100", text: $viewModel.value2)
                     .keyboardType(.decimalPad)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
