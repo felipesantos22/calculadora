@@ -14,15 +14,28 @@ struct ContentView: View {
         NavigationView {
             VStack(spacing: 20) {
                 
-                TextField("Digite o primeiro valor", text: $viewModel.value1)
-                    .keyboardType(.decimalPad)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+                VStack(alignment: .leading) {
+                    Text("Valor 1")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    TextField("100", text: $viewModel.value1)
+                        .keyboardType(.decimalPad)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.vertical, 5)
+                }
+                .padding()
                 
-                TextField("Digite o segundo valor", text: $viewModel.value2)
-                    .keyboardType(.decimalPad)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+                VStack(alignment: .leading) {
+                    Text("Valor 2")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    TextField("100", text: $viewModel.value2)
+                        .keyboardType(.decimalPad)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.vertical, 5)
+                }
+                .padding()
+                
                 
                 HStack(spacing: 15) {
                     Button(action: {
