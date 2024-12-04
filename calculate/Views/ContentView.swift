@@ -12,6 +12,13 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
+            ZStack {
+                Image("back")
+                    .resizable()
+                                        .scaledToFill()
+                                        .ignoresSafeArea()
+                
+            
             VStack(spacing: 20) {
                 
                 VStack(alignment: .leading) {
@@ -21,6 +28,7 @@ struct ContentView: View {
                     TextField("100", text: $viewModel.value1)
                         .keyboardType(.decimalPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(width: 200)
                         .padding(.vertical, 5)
                 }
                 .padding()
@@ -32,6 +40,7 @@ struct ContentView: View {
                     TextField("100", text: $viewModel.value2)
                         .keyboardType(.decimalPad)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(width: 200)
                         .padding(.vertical, 5)
                 }
                 .padding()
@@ -44,7 +53,7 @@ struct ContentView: View {
                     }) {
                         Text("+")
                             .frame(width: 50, height: 50)
-                            .background(Color.blue)
+                            .background(Color.black)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
@@ -54,7 +63,7 @@ struct ContentView: View {
                     }) {
                         Text("-")
                             .frame(width: 50, height: 50)
-                            .background(Color.red)
+                            .background(Color.black)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
@@ -64,7 +73,7 @@ struct ContentView: View {
                     }) {
                         Text("×")
                             .frame(width: 50, height: 50)
-                            .background(Color.green)
+                            .background(Color.black)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
@@ -74,7 +83,7 @@ struct ContentView: View {
                     }) {
                         Text("÷")
                             .frame(width: 50, height: 50)
-                            .background(Color.purple)
+                            .background(Color.black)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
@@ -123,7 +132,7 @@ struct ContentView: View {
             }
         }
     }
-    
+    }
     // Func para limpar o resultado
     private func clearResultAfterDelay() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
