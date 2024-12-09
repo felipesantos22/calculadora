@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @Model
-class CalculatorModel {
+class CalculatorModel: Identifiable {
     var id: UUID
     var value1: Double
     var value2: Double

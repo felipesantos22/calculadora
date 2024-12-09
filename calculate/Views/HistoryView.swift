@@ -14,13 +14,11 @@ struct HistoryView: View {
     
     var body: some View {
         ZStack{
-            Image("back")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
+            Color.gray
+            .edgesIgnoringSafeArea(.all)
             List(history) { record in
                 VStack(alignment: .leading) {
-                    Text("ID: \(record.id)")
+                    Text("ID: \(record.id.uuidString)")
                         .font(.caption)
                         .foregroundColor(.secondary)
                     Text("\(String(format: "%.1f", record.value1)) \(record.operation) \(String(format: "%.1f", record.value2)) = \(String(format: "%.1f", record.result))")

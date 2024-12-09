@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct MyApp: App {
+struct CalculateApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -16,3 +16,4 @@ struct MyApp: App {
         }
     }
 }
+
