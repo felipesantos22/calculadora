@@ -6,22 +6,38 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HistoryView: View {
-    let history: [OperationRecord]
+    
+    @Query(sort: \CalculatorModel.id, order: .forward) private var history: [CalculatorModel]
     
     var body: some View {
-        List(history.sorted { $0.id < $1.id }) { record in
-            VStack(alignment: .leading) {
-                Text("ID: \(record.id)")
-                Text("\(record.value1) \(record.operation) \(record.value2) = \(String(format: "%.1f", record.result))")
-                Text("Data e hora: \(record.timestamp)")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
+        ZStack{
+            Color.blue
+            .edgesIgnoringSafeArea(.all)
+            List(history) { record in
+                VStack(alignment: .leading) {
+                    Text("ID: \(record.id)")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    Text("\(String(format: "%.1f", record.value1)) \(record.operation) \(String(format: "%.1f", record.value2)) = \(String(format: "%.1f", record.result))")
+                        .font(.body)
+                    Text("Data e hora: \(formattedDate(record.timestamp))")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                }
+                .padding(.vertical, 5)
             }
-            .padding(.vertical, 5)
+            .navigationTitle("Histórico")
+            .navigationBarTitleDisplayMode(.large)
         }
-        .navigationTitle("Histórico")
-        .navigationBarTitleDisplayMode(.inline) 
+    }
+    // Func para formatar a data
+    func formattedDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter.string(from: date)
     }
 }
