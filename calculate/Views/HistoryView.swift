@@ -14,8 +14,10 @@ struct HistoryView: View {
     
     var body: some View {
         ZStack{
-            Color.blue
-            .edgesIgnoringSafeArea(.all)
+            Image("back")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
             List(history) { record in
                 VStack(alignment: .leading) {
                     Text("ID: \(record.id)")
