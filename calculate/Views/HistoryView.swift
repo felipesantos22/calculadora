@@ -13,12 +13,15 @@ struct HistoryView: View {
     @Query(sort: \CalculatorModel.id, order: .forward) private var history: [CalculatorModel]
     
     var body: some View {
-        ZStack{
-            Color.gray
-            .edgesIgnoringSafeArea(.all)
+        if history.isEmpty {
+            Text("Nenhum registro encontrado.")
+                .font(.title2)
+                .foregroundColor(.gray)
+                .padding()
+        } else {
             List(history) { record in
                 VStack(alignment: .leading) {
-                    Text("ID: \(record.id.uuidString)")
+                    Text("ID: \(record.id)")
                         .font(.caption)
                         .foregroundColor(.secondary)
                     Text("\(String(format: "%.1f", record.value1)) \(record.operation) \(String(format: "%.1f", record.value2)) = \(String(format: "%.1f", record.result))")
@@ -29,8 +32,6 @@ struct HistoryView: View {
                 }
                 .padding(.vertical, 5)
             }
-            .navigationTitle("Histórico")
-            .navigationBarTitleDisplayMode(.large)
         }
     }
     // Func para formatar a data
