@@ -8,12 +8,11 @@
 import SwiftUI
 
 @main
-struct CalculateApp: App {
+struct CalculatorApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .modelContainer(for: [CalculatorModel.self])
         }
+        .modelContainer(for: [Calculator.self])
     }
 }
-

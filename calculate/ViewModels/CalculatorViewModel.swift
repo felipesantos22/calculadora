@@ -9,7 +9,7 @@ import SwiftData
 import SwiftUI
 
 class CalculatorViewModel: ObservableObject {
-    @Published var operations: [CalculatorModel] = []
+    @Published var operations: [Calculator] = []
     @Published var value1: String = ""
     @Published var value2: String = ""
     @Published var selectedOperation: String = ""
@@ -46,14 +46,14 @@ class CalculatorViewModel: ObservableObject {
         }
 
         // Salva a operação no banco
-        let newOperation = CalculatorModel(value1: val1, value2: val2, operation: selectedOperation, result: result)
+        let newOperation = Calculator(value1: val1, value2: val2, operation: selectedOperation, result: result)
         context.insert(newOperation)
         
         
         do {
             try context.save()
+            print("Salvo com sucesso")
             showSuccessMessage("Operação salva com sucesso!")
-            loadOperations(context: context)
             hideResultAfterDelay()
         } catch {
             showSuccessMessage("Erro ao salvar operação.")
@@ -62,22 +62,12 @@ class CalculatorViewModel: ObservableObject {
         clearFields()
     }
     
-    func loadOperations(context: ModelContext) {
-        let descriptor = FetchDescriptor<CalculatorModel>(sortBy: [SortDescriptor(\.timestamp, order: .reverse)])
-        do {
-            operations = try context.fetch(descriptor)
-        } catch {
-            print("Erro ao carregar operações: \(error)")
-        }
-    }
-    
     func clearHistory(context: ModelContext) {
         for operation in operations {
             context.delete(operation)
         }
         do {
             try context.save()
-            loadOperations(context: context)
         } catch {
             print("Erro ao limpar histórico: \(error)")
         }
