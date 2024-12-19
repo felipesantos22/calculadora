@@ -97,4 +97,9 @@ class CalculatorViewModel: ObservableObject {
         }
         return input
     }
+    
+    func clearResult(result: Calculator, context: ModelContext) {
+        context.delete(result)
+        try? context.save()
+    }
 }

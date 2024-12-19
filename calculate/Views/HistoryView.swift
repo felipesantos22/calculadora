@@ -11,6 +11,8 @@ import SwiftData
 struct HistoryView: View {
     
     @Query(sort: \Calculator.timestamp, order: .forward) private var calculator: [Calculator]
+    @Environment(\.modelContext) private var context
+    @StateObject private var viewModel = CalculatorViewModel()
     
     var body: some View {
         if calculator.isEmpty {
@@ -29,6 +31,11 @@ struct HistoryView: View {
                     Text("Data e hora: \(formattedDate(record.timestamp))")
                         .font(.footnote)
                         .foregroundColor(.gray)
+                    Button(action: {
+                        viewModel.clearResult(result: record, context: context)
+                    }){
+                        Text("Excluir").foregroundColor(.red)
+                    }
                 }
                 .padding(.vertical, 5)
             }
