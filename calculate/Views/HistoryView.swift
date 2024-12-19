@@ -49,3 +49,7 @@ struct HistoryView: View {
         return formatter.string(from: date)
     }
 }
+
+#Preview {
+    HistoryView()
+}
